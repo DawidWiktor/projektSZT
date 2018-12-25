@@ -1,0 +1,10 @@
+.container--header
+{
+    margin-bottom: 10px;
+}
+
+.container--navbar {
+    padding-left: 0px;
+    padding-right: 0px;
+    box-shadow: 3px 9px 38px -16px rgba(0,0,0,0.75);
+}
