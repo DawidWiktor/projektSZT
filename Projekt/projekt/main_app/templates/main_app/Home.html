@@ -4,48 +4,21 @@
 
 
 <div class="row">
-    Tytuł artykułu {{article.title}}
-</div>
-<div class="row">
-    Data i autor {{article.date}} {{article.author}}
-</div>
-<div class="row">
-    zdjęcie 
-</div>
-<div class="row">
-    opis {{article.text}}
-</div>
-<div class="row">
-    zdjęcia {{article.background | safe}}
-</div>
-
-{% load static %}
-<div>
-        <form class="login-form" action="{% url 'main_app:articleView' %}" method="post">
-                {% csrf_token %}
-<textarea class="tinymce" name="artic">{{tekst}}</textarea>
-<script type="text/javascript" src="{% static 'main_app/js/jquery-3.3.1.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'main_app/plugin/tinymce/tinymce.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'main_app/plugin/tinymce/init-tinymce.js' %}"></script>
-<link rel="stylesheet" href="{% static 'main_app/css/base.css' %}" type="text/css">
-<button type="submit" class="btn btn-default" value="Login" class="form login"> Zaloguj </button>
-
-</form>
-
+    {% for article in articles %}
+    <div class="shortArticle card col-md-3">
+        <a href="{% url 'main_app:articleView' article.id %}">
+            <img class="img-responsive" src="media/{{article.image}}" alt="imageArticle" width="100%">
+            <div class="card-title shortArticle_title">{{article.title}}</div>
+        </a>
+    </div>
+    {% endfor %}
 </div>
 
 
-<form method="post" action="{% url 'main_app:simple_upload' %}" enctype="multipart/form-data">
-    {% csrf_token %}
-    <input type="file" name="myfile">
-    <button type="submit">Upload</button>
-  </form>
 
-  {% if uploaded_file_url %}
-    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
-  {% endif %}
 
-  <div style="color:{{article.color}}">asdasd</div>
+
+
 
 
 {% endblock %}

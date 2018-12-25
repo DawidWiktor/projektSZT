@@ -10,6 +10,7 @@ class Navbar(models.Model):
     text2 = models.CharField(max_length=20)
     text3 = models.CharField(max_length=20)
     text4 = models.CharField(max_length=20)
+    text5 = models.CharField(max_length=20, null = True)
     color = RGBColorField(default = '#f8f9fa')
     fontColor = RGBColorField(default = '#ffffff')
 
@@ -18,6 +19,10 @@ class Footer(models.Model):
     fontColor = RGBColorField(default = '#ffffff')
     text1 = HTMLField(null = True)
     text2 = HTMLField(null = True)
+
+class BasePage(models.Model):
+    headerImage = models.ImageField()
+    background_color = RGBColorField()
 
 class Atricles(models.Model):
     title = models.CharField(max_length=100, unique=True)
