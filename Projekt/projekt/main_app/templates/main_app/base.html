@@ -1,74 +1,107 @@
 <!DOCTYPE html>
 
 <html>
+
 <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
 
-   <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
 
-      
-      </head>
+
+</head>
 
 <body>
-    <div class="container">
-        {% if not user.is_authenticated %}
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">Projekt</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-              
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                  <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="#">Kategoria</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Kontakt</a>
-                    </li>
-                    <li data-toggle="modal" data-target="#login">
-                      <a href="#" class="nav-link">
-
-                          <p>Logowanie</p>
-                      </a>
-                  </li>
-                  <li data-toggle="modal" data-target="#register">
-                    <a href="#" class="nav-link">
-                        <i class="fa fa-user-plus" aria-hidden="true"></i>
-                        <p>Rejestracja</p>
-                    </a>
-                </li>
-                  </ul>
-                  <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Wyszukaj">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Wyszukaj</button>
-                  </form>
-                </div>
-            </nav>
-          
-        {% include "user_account/login_and_register.html" %}
-        
-        {% else %}
-        w else
-        
-        <a href="{% url 'user_account:logout_view' %}">
-          <i class="fa fa-sign-out" aria-hidden="true"></i>
-          <p>Wyloguj</p>
-      </a>
-      
-        {% endif %}
-        
-        {% block middle %}
-        {% endblock %}
-        
+  <div class="container">
+    {% if not user.is_authenticated %}
+    <div class="container--header">
+      <div class="row">
+        <div class="offset-lg-10 col-lg-2" data-toggle="modal" data-target="#login">
+          <a href="#">Sign in</a>
+        </div>
+      </div>
     </div>
-  
+    {% include "user_account/login_and_register.html" %}
+
+    {% else %}
+    <div class="container--header">
+      <div class="row">
+        <a class="offset-lg-10 col-lg-2" href="{% url 'user_account:logout_view' %}">
+          <p>Log out</p>
+        </a>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="row">
+      <img src="m4.jpg" class="img-responsive" width="100%" alt="Base image">
+    </div>
+
+    <div class="container--navbar sticky-top" style="background-color:{{nav.color}};">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand offset-lg-1 col-lg-1" style="color:{{nav.fontColor}}" href="#">{{nav.textMain}}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggles"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" style="color:{{nav.fontColor}}" href="#">{{nav.text1}}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="color:{{nav.fontColor}}" href="#">{{nav.text2}}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="color:{{nav.fontColor}}" href="#">{{nav.text3}}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" style="color:{{nav.fontColor}}" href="#">{{nav.text4}}</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    </div>
+
+
+    {% block middle %}
+    {% endblock %}
+
+    <footer class="page-footer font-small teal pt-4" style="background-color:{{footer.backColor}};">
+        <div class="container-fluid text-center text-md-left">
+            <div class="row">
+                <div class="col-md-6 mt-md-0 mt-3">
+                    {{text1}}
+                </div>
+                <hr class="clearfix w-100 d-md-none pb-3">
+                <div class="col-md-6 mb-md-0 mb-3">
+                    {{text2}}
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright text-center py-3" style="color: {{footer.fontColor}};">© 2018 Copyright:
+            <a href="#"> blog.com</a>
+        </div>
+    </footer>
+
+
+
+
+  </div>
+
 </body>
 
 </html>

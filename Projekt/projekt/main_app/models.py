@@ -4,6 +4,21 @@ from colorful.fields import RGBColorField
 # Create your models here.
 
 
+class Navbar(models.Model):
+    textMain = models.CharField(max_length=20)
+    text1 = models.CharField(max_length=20)
+    text2 = models.CharField(max_length=20)
+    text3 = models.CharField(max_length=20)
+    text4 = models.CharField(max_length=20)
+    color = RGBColorField(default = '#f8f9fa')
+    fontColor = RGBColorField(default = '#ffffff')
+
+class Footer(models.Model):
+    backColor = RGBColorField(default = '#f8f9fa')
+    fontColor = RGBColorField(default = '#ffffff')
+    text1 = HTMLField(null = True)
+    text2 = HTMLField(null = True)
+
 class Atricles(models.Model):
     title = models.CharField(max_length=100, unique=True)
     author = models.CharField(max_length=50, null=True)
