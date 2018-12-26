@@ -24,20 +24,21 @@ class BasePage(models.Model):
     headerImage = models.ImageField()
     background_color = RGBColorField()
 
+
+class Categories(models.Model):
+    name=models.CharField(null = True, max_length = 50)
+    priority=models.IntegerField()
+
 class Atricles(models.Model):
-    title = models.CharField(max_length=100, unique=True)
-    author = models.CharField(max_length=50, null=True)
-    date = models.DateField(null=True)
-    text = models.TextField(null=True)
+    title = HTMLField(null = True)
+    author = HTMLField(null=True)
+    date = HTMLField(null=True)
+    text = HTMLField(null=True)
     image = models.ImageField(null=True)
     isBest=models.NullBooleanField(null = True)
     background = HTMLField(null=True)
-    color = RGBColorField(null= True)
+    backgroundColor = RGBColorField(null= True)
+    categoryId=models.ForeignKey(Categories, default = 1,  on_delete = models.CASCADE)
 
-    #categoryId=models.ForeignKey(Categories, on_delete = models.CASCADE)
 
-
-class Categories(models.Model):
-    name=models.CharField(max_length = 50)
-    priority=models.IntegerField()
 

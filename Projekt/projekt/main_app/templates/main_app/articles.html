@@ -2,10 +2,15 @@
 
 {% block middle %}
 
+<div class="row">
+    <div class="col articlesMainTitle">
+        {{nav.text1}}
+    </div>
+</div>
 
 <div class="row">
     {% for article in articles %}
-    <div class="shortArticle card col-md-4">
+    <div class="col-md-4 card shortArticle">
         <a href="{% url 'main_app:articleView' article.id %}">
             <img class="img-responsive smallImageArticle" src="media/{{article.image}}" alt="imageArticle" width="100%">
             <div class="card-title shortArticle_title">{{article.title}}</div>
@@ -13,6 +18,7 @@
     </div>
     {% endfor %}
 </div>
+
 
 
 

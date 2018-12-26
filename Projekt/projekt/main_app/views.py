@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Atricles
+from .models import Atricles, Categories
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from .models import Footer
@@ -7,7 +7,17 @@ from .models import Footer
 
 def start_page(request):
     articles = Atricles.objects.only('id','title', 'image').filter(isBest = True)[:9]
-    return render(request, 'main_app/Home.html', { 'articles' : articles})
+    categories = Categories.objects.all()
+    return render(request, 'main_app/Home.html', { 'articles' : articles, 'categories' : categories})
+
+def articles(request):
+    articles = Atricles.objects.filter(categoryId = 1)
+    return render(request, 'main_app/articles.html', { 'articles' : articles})
+
+def tests(request):
+    tests = Atricles.objects.filter(categoryId = 2)
+    return render(request, 'main_app/tests.html', { 'articles' : articles})
+
 
 
 def changeFooterText1(request):
@@ -26,11 +36,50 @@ def changeFooterText2(request):
         footer.save()
         return render(request, 'main_app/Home.html')
 
+
+
 def articleView(request, articleId):
     article = Atricles.objects.filter(id = articleId).first()
+    categories = Categories.objects.all()
     print(article.image)
-    return render(request, 'main_app/Home.html', {'article': article})
+    return render(request, 'main_app/article.html', {'article': article, 'categories': categories})
 
+def articleChangeTitle(request, articleId):
+    article = Atricles.objects.filter(id = articleId).first()
+    article.title = request.POST.get('text')
+    article.save()
+    return render(request, 'main_app/article.html', {'article': article})
+
+def articleChangeDate(request, articleId):
+    article = Atricles.objects.filter(id = articleId).first()
+    article.date = request.POST.get('text')
+    article.save()
+    return render(request, 'main_app/article.html', {'article': article})
+
+def articleChangeAuthor(request, articleId):
+    article = Atricles.objects.filter(id = articleId).first()
+    article.author = request.POST.get('text')
+    article.save()
+    return render(request, 'main_app/article.html', {'article': article})
+
+def articleChangeText(request, articleId):
+    article = Atricles.objects.filter(id = articleId).first()
+    article.text = request.POST.get('text')
+    article.save()
+    return render(request, 'main_app/article.html', {'article': article})
+
+def articleChangeCategory(request, articleId):
+    article = Atricles.objects.filter(id = articleId).first()
+    text = request.POST.get('text')
+
+    article.save()
+    return render(request, 'main_app/article.html', {'article': article})
+
+def articleChangeBackgroundColor(request, articleId):
+    article = Atricles.objects.filter(id = articleId).first()
+    article.backgroundColor = request.POST.get('text')
+    article.save()
+    return render(request, 'main_app/article.html', {'article': article})
 
 def simple_upload(request):
     context = {}

@@ -10,8 +10,48 @@
     box-shadow: 3px 9px 38px -16px rgba(0,0,0,0.75);
 }
 
+.bodyContent{
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 .shortArticle{
-    margin: 1%;
-    padding: 0px;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.shortArticle_title{
     text-align: center;
+}
+
+.baseHeaderImage{
+    max-height: 300px;
+    max-height: 1400px;
+}
+
+.articleTitle{
+    margin-top:5px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.articleDate{
+    margin-top: 2px;
+}
+
+.articleAuthor{
+    margin-bottom: 5px;
+}
+
+.smallImageArticle{
+    max-height: 255px;
+}
+
+.articlesMainTitle{
+    text-align: center;
+    font-weight: 600;
+    font-size: 32px;
+    margin-top: 20px;
+    margin-bottom: 15px;
 }

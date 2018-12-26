@@ -1,0 +1,120 @@
+{% extends 'main_app/base.html' %}
+
+{% block middle %}
+<div style="background-color:{{article.backgroundColor}}">
+
+    <!------------------------------------------------------ BackgroundColor --------------------------------------------------->
+    {% if not user.is_authenticated %}
+    {% else %}
+    <div class="row">
+        <div class="col-md-2">
+            <form action="{% url 'main_app:articleChangeBackgroundColor' article.id %}" method="post">
+                {% csrf_token %}
+                <input type="color"  name="text">{{article.backgroundColor}}</input>
+                <button type="submit" class="btn btn-default" value="Change" class="form title"> Change BackgroundColor
+                </button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
+
+    <!------------------------------------------------------ Category --------------------------------------------------->
+    {% if not user.is_authenticated %}
+    {% else %}
+    <div class="row">
+        <div class="col-md-2">
+            <form action="{% url 'main_app:articleChangeCategory' article.id %}" method="post">
+                {% csrf_token %}
+                <textarea  name="text">{{article.category}}</textarea>
+                <button type="submit" class="btn btn-default" value="Change" class="form title"> Change category
+                </button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
+    <!------------------------------------------------------ Title --------------------------------------------------->
+    {% if not user.is_authenticated %}
+    <div class="row">
+        <div class="offset-lg-5 col-md-3 articleTitle">
+            {{article.title | safe}}
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="offset-lg-5 col-md-3">
+            <form action="{% url 'main_app:articleChangeTitle' article.id %}" method="post">
+                {% csrf_token %}
+                <textarea class="tinymce" name="text">{{article.title}}</textarea>
+                <button type="submit" class="btn btn-default" value="Change" class="form title"> Change title
+                </button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
+    <!------------------------------------------------------ Date --------------------------------------------------->
+    {% if not user.is_authenticated %}
+    <div class="row">
+        <div class="col-md-2 articleDate">
+            {{article.date | safe}}
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class="col-md-3">
+            <form action="{% url 'main_app:articleChangeDate' article.id %}" method="post">
+                {% csrf_token %}
+                <textarea class="tinymce" name="text">{{article.date}}</textarea>
+                <button type="submit" class="btn btn-default" value="Change" class="form title"> Change dates
+                </button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
+
+    <!------------------------------------------------------ Author --------------------------------------------------->
+    {% if not user.is_authenticated %}
+    <div class="row">
+        <div class="col-md-2 articleAuthor">
+            {{article.author | safe}}
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class=" col-md-3">
+            <form action="{% url 'main_app:articleChangeAuthor' article.id %}" method="post">
+                {% csrf_token %}
+                <textarea class="tinymce" name="text">{{article.author}}</textarea>
+                <button type="submit" class="btn btn-default" value="Change" class="form title"> Change author
+                </button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
+
+    <!------------------------------------------------------ Text --------------------------------------------------->
+    {% if not user.is_authenticated %}
+    <div class="row">
+        <div class="col-md-12 articleText">
+            {{article.text | safe}}
+        </div>
+    </div>
+    {% else %}
+    <div class="row">
+        <div class=" col-md-12">
+            <form action="{% url 'main_app:articleChangeText' article.id %}" method="post">
+                {% csrf_token %}
+                <textarea class="tinymce" name="text">{{article.text}}</textarea>
+                <button type="submit" class="btn btn-default" value="Change" class="form title"> Change text
+                </button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

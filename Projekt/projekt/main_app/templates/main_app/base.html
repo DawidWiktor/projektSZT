@@ -27,7 +27,7 @@
 
 <body>
 
-  <div class="container">
+  <div class="container bodyContent">
     {% if not user.is_authenticated %}
     <div class="container--header">
       <div class="row">
@@ -49,12 +49,12 @@
     {% endif %}
 
     <div class="row">
-      <img src="media/{{base.headerImage}}" class="img-responsive" width="100%" alt="Base image">
+      <img src="media/{{base.headerImage}}" class="img-responsive baseHeaderImage" width="100%" alt="Base image">
     </div>
 
     <div class="container--navbar sticky-top" style="background-color:{{nav.color}};">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand offset-lg-1 col-lg-1" style="color:{{nav.fontColor}}" href="#">{{nav.textMain}}</a>
+        <a class="navbar-brand offset-lg-1 col-lg-1" style="color:{{nav.fontColor}}" href="{% url 'main_app:start_page' %}">{{nav.textMain}}</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggles"
           aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -62,10 +62,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" style="color:{{nav.fontColor}}" href="#">{{nav.text1}}</a>
+              <a class="nav-link" style="color:{{nav.fontColor}}" href="{% url 'main_app:articles' %}">{{nav.text1}}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" style="color:{{nav.fontColor}}" href="#">{{nav.text2}}</a>
+              <a class="nav-link" style="color:{{nav.fontColor}}" href="{% url 'main_app:tests' %}">{{nav.text2}}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" style="color:{{nav.fontColor}}" href="#">{{nav.text3}}</a>
@@ -93,7 +93,7 @@
     {% if not user.is_authenticated %}
 
     {% else %}
-    asd
+    
     {% endif %}
 
 
