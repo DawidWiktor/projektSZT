@@ -10,15 +10,17 @@ class Navbar(models.Model):
     text2 = models.CharField(max_length=20)
     text3 = models.CharField(max_length=20)
     text4 = models.CharField(max_length=20)
-    text5 = models.CharField(max_length=20, null = True)
-    color = RGBColorField(default = '#f8f9fa')
-    fontColor = RGBColorField(default = '#ffffff')
+    text5 = models.CharField(max_length=20, null=True)
+    color = RGBColorField(default='#f8f9fa')
+    fontColor = RGBColorField(default='#ffffff')
+
 
 class Footer(models.Model):
-    backColor = RGBColorField(default = '#f8f9fa')
-    fontColor = RGBColorField(default = '#ffffff')
-    text1 = HTMLField(null = True)
-    text2 = HTMLField(null = True)
+    backColor = RGBColorField(default='#f8f9fa')
+    fontColor = RGBColorField(default='#ffffff')
+    text1 = HTMLField(null=True)
+    text2 = HTMLField(null=True)
+
 
 class BasePage(models.Model):
     headerImage = models.ImageField()
@@ -26,19 +28,19 @@ class BasePage(models.Model):
 
 
 class Categories(models.Model):
-    name=models.CharField(null = True, max_length = 50)
-    priority=models.IntegerField()
+    name = models.CharField(null=True, max_length=50)
+    priority = models.IntegerField()
+
 
 class Atricles(models.Model):
-    title = HTMLField(null = True)
+    title = HTMLField(null=True)
     author = HTMLField(null=True)
     date = HTMLField(null=True)
     text = HTMLField(null=True)
     image = models.ImageField(null=True)
-    isBest=models.NullBooleanField(null = True)
+    isBest = models.NullBooleanField(null=True, default=False)
+    isVisible = models.BooleanField(default=False)
     background = HTMLField(null=True)
-    backgroundColor = RGBColorField(null= True)
-    categoryId=models.ForeignKey(Categories, default = 1,  on_delete = models.CASCADE)
-
-
-
+    backgroundColor = RGBColorField(null=True)
+    categoryId = models.ForeignKey(
+        Categories, default=1,  on_delete=models.CASCADE)

@@ -6,12 +6,59 @@
     <!------------------------------------------------------ BackgroundColor --------------------------------------------------->
     {% if not user.is_authenticated %}
     {% else %}
-    <div class="row">
+    <div class="row rowChangeArticle">
         <div class="col-md-2">
             <form action="{% url 'main_app:articleChangeBackgroundColor' article.id %}" method="post">
                 {% csrf_token %}
-                <input type="color"  name="text">{{article.backgroundColor}}</input>
+                <input type="color" name="text">{{article.backgroundColor}}</input>
                 <button type="submit" class="btn btn-default" value="Change" class="form title"> Change BackgroundColor
+                </button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
+    <!------------------------------------------------------ Image --------------------------------------------------->
+    {% if not user.is_authenticated %}
+    {% else %}
+    <div class="row rowChangeArticle">
+        <div class="col-md-2">
+            <form action="{% url 'main_app:articleChangeImage' article.id %}" method="post">
+                {% csrf_token %}
+                <input type="file" name="text">{{article.image}}</input>
+                <button type="submit" class="btn btn-default" value="Change" class="form title"> Change image
+                </button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
+    <!------------------------------------------------------ IsBest --------------------------------------------------->
+    {% if not user.is_authenticated %}
+    {% else %}
+    <div class="row rowChangeArticle">
+        <div class="col-md-2">
+            Is best?
+            <form action="{% url 'main_app:articleChangeIsBest' article.id %}" method="post">
+                {% csrf_token %}
+                <input type="checkbox" name="text">{{article.isBest}}</input>
+                <button type="submit" class="btn btn-default" value="Change" class="form title"> Change isBest
+                </button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+
+    <!------------------------------------------------------ IsVisible --------------------------------------------------->
+    {% if not user.is_authenticated %}
+    {% else %}
+    <div class="row rowChangeArticle">
+        <div class="col-md-2">
+            Is visible?
+            <form action="{% url 'main_app:articleChangeIsVisible' article.id %}" method="post">
+                {% csrf_token %}
+                <input type="checkbox" name="text">{{article.isVisible}}</input>
+                <button type="submit" class="btn btn-default" value="Change" class="form title"> Change is visible
                 </button>
             </form>
         </div>
@@ -22,11 +69,11 @@
     <!------------------------------------------------------ Category --------------------------------------------------->
     {% if not user.is_authenticated %}
     {% else %}
-    <div class="row">
+    <div class="row rowChangeArticle">
         <div class="col-md-2">
             <form action="{% url 'main_app:articleChangeCategory' article.id %}" method="post">
                 {% csrf_token %}
-                <textarea  name="text">{{article.category}}</textarea>
+                <textarea name="text">{{article.category}}</textarea>
                 <button type="submit" class="btn btn-default" value="Change" class="form title"> Change category
                 </button>
             </form>
@@ -42,7 +89,7 @@
         </div>
     </div>
     {% else %}
-    <div class="row">
+    <div class="row rowChangeArticle">
         <div class="offset-lg-5 col-md-3">
             <form action="{% url 'main_app:articleChangeTitle' article.id %}" method="post">
                 {% csrf_token %}
@@ -62,7 +109,7 @@
         </div>
     </div>
     {% else %}
-    <div class="row">
+    <div class="row rowChangeArticle">
         <div class="col-md-3">
             <form action="{% url 'main_app:articleChangeDate' article.id %}" method="post">
                 {% csrf_token %}
@@ -83,7 +130,7 @@
         </div>
     </div>
     {% else %}
-    <div class="row">
+    <div class="row rowChangeArticle">
         <div class=" col-md-3">
             <form action="{% url 'main_app:articleChangeAuthor' article.id %}" method="post">
                 {% csrf_token %}
@@ -104,7 +151,7 @@
         </div>
     </div>
     {% else %}
-    <div class="row">
+    <div class="row rowChangeArticle">
         <div class=" col-md-12">
             <form action="{% url 'main_app:articleChangeText' article.id %}" method="post">
                 {% csrf_token %}

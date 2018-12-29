@@ -8,12 +8,22 @@
     </div>
 </div>
 
+{% if not user.is_authenticated %}
+
+{% else %}
+<div class="row">
+    <div class="col-md-1">
+        <a href="{% url 'main_app:articleAdd' %}" role="button" class="btn btn-success">Add article</a>
+    </div>
+</div>
+{% endif %}
+
 <div class="row">
     {% for article in articles %}
     <div class="col-md-4 card shortArticle">
         <a href="{% url 'main_app:articleView' article.id %}">
             <img class="img-responsive smallImageArticle" src="media/{{article.image}}" alt="imageArticle" width="100%">
-            <div class="card-title shortArticle_title">{{article.title}}</div>
+            <div class="card-title shortArticle_title">{{article.title | safe}}</div>
         </a>
     </div>
     {% endfor %}

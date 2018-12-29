@@ -6,16 +6,16 @@ from .models import Footer
 # Create your views here.
 
 def start_page(request):
-    articles = Atricles.objects.only('id','title', 'image').filter(isBest = True)[:9]
+    articles = Atricles.objects.only('id','title', 'image').filter(isBest = True).filter(isVisible = True)[:9]
     categories = Categories.objects.all()
     return render(request, 'main_app/Home.html', { 'articles' : articles, 'categories' : categories})
 
 def articles(request):
-    articles = Atricles.objects.filter(categoryId = 1)
+    articles = Atricles.objects.filter(categoryId = 1).filter(isVisible = True)
     return render(request, 'main_app/articles.html', { 'articles' : articles})
 
 def tests(request):
-    tests = Atricles.objects.filter(categoryId = 2)
+    tests = Atricles.objects.filter(categoryId = 2).filter(isVisible = True)
     return render(request, 'main_app/tests.html', { 'articles' : articles})
 
 
@@ -78,6 +78,38 @@ def articleChangeCategory(request, articleId):
 def articleChangeBackgroundColor(request, articleId):
     article = Atricles.objects.filter(id = articleId).first()
     article.backgroundColor = request.POST.get('text')
+    article.save()
+    return render(request, 'main_app/article.html', {'article': article})
+
+
+def articleChangeIsBest(request, articleId):
+    article = Atricles.objects.filter(id = articleId).first()
+    if(request.POST.get('text') == "on"):
+        article.isBest = True
+    else:
+        article.isBest = False
+    article.save()
+    return render(request, 'main_app/article.html', {'article': article})
+
+def articleChangeIsVisible(request, articleId):
+    article = Atricles.objects.filter(id = articleId).first()
+    if(request.POST.get('text') == "on"):
+        article.isVisible = True
+    else:
+        article.isVisible = False
+    article.save()
+    return render(request, 'main_app/article.html', {'article': article})
+
+def articleChangeImage(request, articleId):
+    article = Atricles.objects.filter(id = articleId).first()
+    article.image = request.POST.get('text')
+    article.save()
+    return render(request, 'main_app/article.html', {'article': article})
+
+def articleAdd(request):
+    article = Atricles()
+    category = Categories.objects.filter(id = 1).first()
+    article.categoryId = category
     article.save()
     return render(request, 'main_app/article.html', {'article': article})
 
