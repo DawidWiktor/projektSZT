@@ -12,7 +12,7 @@ def start_page(request):
 
 def articles(request):
     articles = Atricles.objects.filter(categoryId = 1).filter(isVisible = True)
-    return render(request, 'main_app/articles.html', { 'articles' : articles})
+    return render(request, 'article_app/articles.html', { 'articles' : articles})
 
 def tests(request):
     tests = Atricles.objects.filter(categoryId = 2).filter(isVisible = True)
@@ -35,83 +35,6 @@ def changeFooterText2(request):
         footer.text2 = text
         footer.save()
         return render(request, 'main_app/Home.html')
-
-
-
-def articleView(request, articleId):
-    article = Atricles.objects.filter(id = articleId).first()
-    categories = Categories.objects.all()
-    print(article.image)
-    return render(request, 'main_app/article.html', {'article': article, 'categories': categories})
-
-def articleChangeTitle(request, articleId):
-    article = Atricles.objects.filter(id = articleId).first()
-    article.title = request.POST.get('text')
-    article.save()
-    return render(request, 'main_app/article.html', {'article': article})
-
-def articleChangeDate(request, articleId):
-    article = Atricles.objects.filter(id = articleId).first()
-    article.date = request.POST.get('text')
-    article.save()
-    return render(request, 'main_app/article.html', {'article': article})
-
-def articleChangeAuthor(request, articleId):
-    article = Atricles.objects.filter(id = articleId).first()
-    article.author = request.POST.get('text')
-    article.save()
-    return render(request, 'main_app/article.html', {'article': article})
-
-def articleChangeText(request, articleId):
-    article = Atricles.objects.filter(id = articleId).first()
-    article.text = request.POST.get('text')
-    article.save()
-    return render(request, 'main_app/article.html', {'article': article})
-
-def articleChangeCategory(request, articleId):
-    article = Atricles.objects.filter(id = articleId).first()
-    text = request.POST.get('text')
-
-    article.save()
-    return render(request, 'main_app/article.html', {'article': article})
-
-def articleChangeBackgroundColor(request, articleId):
-    article = Atricles.objects.filter(id = articleId).first()
-    article.backgroundColor = request.POST.get('text')
-    article.save()
-    return render(request, 'main_app/article.html', {'article': article})
-
-
-def articleChangeIsBest(request, articleId):
-    article = Atricles.objects.filter(id = articleId).first()
-    if(request.POST.get('text') == "on"):
-        article.isBest = True
-    else:
-        article.isBest = False
-    article.save()
-    return render(request, 'main_app/article.html', {'article': article})
-
-def articleChangeIsVisible(request, articleId):
-    article = Atricles.objects.filter(id = articleId).first()
-    if(request.POST.get('text') == "on"):
-        article.isVisible = True
-    else:
-        article.isVisible = False
-    article.save()
-    return render(request, 'main_app/article.html', {'article': article})
-
-def articleChangeImage(request, articleId):
-    article = Atricles.objects.filter(id = articleId).first()
-    article.image = request.POST.get('text')
-    article.save()
-    return render(request, 'main_app/article.html', {'article': article})
-
-def articleAdd(request):
-    article = Atricles()
-    category = Categories.objects.filter(id = 1).first()
-    article.categoryId = category
-    article.save()
-    return render(request, 'main_app/article.html', {'article': article})
 
 def simple_upload(request):
     context = {}
