@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main_app',
     'article_app',
+    'tests_app',
     'user_account',
     'tinymce',
     'ckeditor_uploader',

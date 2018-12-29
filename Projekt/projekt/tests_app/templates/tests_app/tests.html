@@ -1,0 +1,36 @@
+{% extends 'main_app/base.html' %}
+
+{% block middle %}
+
+<div class="row">
+    <div class="col articlesMainTitle">
+        {{nav.text2}}
+    </div>
+</div>
+
+{% if not user.is_authenticated %}
+
+{% else %}
+<div class="row">
+    <div class="col-md-1">
+        <a href="{% url 'tests_app:testAdd' %}" role="button" class="btn btn-success">Add tests</a>
+    </div>
+</div>
+{% endif %}
+
+<div class="row">
+    {% for test in tests %}
+    <div class="col-md-4 card shortArticle">
+        <a href="{% url 'tests_app:testView' test.id %}">
+            <img class="img-responsive smallImageArticle" src="../media/{{test.image}}" alt="imageArticle" width="100%">
+            <div class="card-title shortArticle_title">{{test.title | safe}}</div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+
+{% endblock %}

@@ -1,16 +1,16 @@
 {% extends 'main_app/base.html' %}
 
 {% block middle %}
-<div style="background-color:{{article.backgroundColor}}">
+<div style="background-color:{{test.backgroundColor}}">
 
     <!------------------------------------------------------ BackgroundColor --------------------------------------------------->
     {% if not user.is_authenticated %}
     {% else %}
     <div class="row rowChangeArticle">
         <div class="col-md-2">
-            <form action="{% url 'article_app:articleChangeBackgroundColor' article.id %}" method="post">
+            <form action="{% url 'tests_app:testChangeBackgroundColor' test.id %}" method="post">
                 {% csrf_token %}
-                <input type="color" name="text">{{article.backgroundColor}}</input>
+                <input type="color" name="text">{{test.backgroundColor}}</input>
                 <button type="submit" class="btn btn-default" value="Change" class="form title"> Change BackgroundColor
                 </button>
             </form>
@@ -23,9 +23,9 @@
     {% else %}
     <div class="row rowChangeArticle">
         <div class="col-md-2">
-            <form action="{% url 'article_app:articleChangeImage' article.id %}" method="post">
+            <form action="{% url 'tests_app:testChangeImage' test.id %}" method="post">
                 {% csrf_token %}
-                <input type="file" name="text">{{article.image}}</input>
+                <input type="file" name="text">{{test.image}}</input>
                 <button type="submit" class="btn btn-default" value="Change" class="form title"> Change image
                 </button>
             </form>
@@ -39,9 +39,9 @@
     <div class="row rowChangeArticle">
         <div class="col-md-2">
             Is best?
-            <form action="{% url 'article_app:articleChangeIsBest' article.id %}" method="post">
+            <form action="{% url 'tests_app:testChangeIsBest' test.id %}" method="post">
                 {% csrf_token %}
-                <input type="checkbox" name="text">{{article.isBest}}</input>
+                <input type="checkbox" name="text">{{test.isBest}}</input>
                 <button type="submit" class="btn btn-default" value="Change" class="form title"> Change isBest
                 </button>
             </form>
@@ -55,9 +55,9 @@
     <div class="row rowChangeArticle">
         <div class="col-md-2">
             Is visible?
-            <form action="{% url 'article_app:articleChangeIsVisible' article.id %}" method="post">
+            <form action="{% url 'tests_app:testChangeIsVisible' test.id %}" method="post">
                 {% csrf_token %}
-                <input type="checkbox" name="text">{{article.isVisible}}</input>
+                <input type="checkbox" name="text">{{test.isVisible}}</input>
                 <button type="submit" class="btn btn-default" value="Change" class="form title"> Change is visible
                 </button>
             </form>
@@ -70,9 +70,9 @@
     {% else %}
     <div class="row rowChangeArticle">
         <div class="col-md-2">
-            <form action="{% url 'article_app:articleChangeCategory' article.id %}" method="post">
+            <form action="{% url 'tests_app:testChangeCategory' test.id %}" method="post">
                 {% csrf_token %}
-                <textarea name="text">{{article.category}}</textarea>
+                <textarea name="text">{{test.category}}</textarea>
                 <button type="submit" class="btn btn-default" value="Change" class="form title"> Change category
                 </button>
             </form>
@@ -84,15 +84,15 @@
     {% if not user.is_authenticated %}
     <div class="row">
         <div class="offset-lg-5 col-md-3 articleTitle">
-            {{article.title | safe}}
+            {{test.title | safe}}
         </div>
     </div>
     {% else %}
     <div class="row rowChangeArticle">
         <div class="offset-lg-5 col-md-3">
-            <form action="{% url 'article_app:articleChangeTitle' article.id %}" method="post">
+            <form action="{% url 'tests_app:testChangeTitle' test.id %}" method="post">
                 {% csrf_token %}
-                <textarea class="tinymce" name="text">{{article.title}}</textarea>
+                <textarea class="tinymce" name="text">{{test.title}}</textarea>
                 <button type="submit" class="btn btn-default" value="Change" class="form title"> Change title
                 </button>
             </form>
@@ -104,15 +104,15 @@
     {% if not user.is_authenticated %}
     <div class="row">
         <div class="col-md-2 articleDate">
-            {{article.date | safe}}
+            {{test.date | safe}}
         </div>
     </div>
     {% else %}
     <div class="row rowChangeArticle">
         <div class="col-md-3">
-            <form action="{% url 'article_app:articleChangeDate' article.id %}" method="post">
+            <form action="{% url 'tests_app:testChangeDate' test.id %}" method="post">
                 {% csrf_token %}
-                <textarea class="tinymce" name="text">{{article.date}}</textarea>
+                <textarea class="tinymce" name="text">{{test.date}}</textarea>
                 <button type="submit" class="btn btn-default" value="Change" class="form title"> Change dates
                 </button>
             </form>
@@ -125,15 +125,15 @@
     {% if not user.is_authenticated %}
     <div class="row">
         <div class="col-md-2 articleAuthor">
-            {{article.author | safe}}
+            {{test.author | safe}}
         </div>
     </div>
     {% else %}
     <div class="row rowChangeArticle">
         <div class=" col-md-3">
-            <form action="{% url 'article_app:articleChangeAuthor' article.id %}" method="post">
+            <form action="{% url 'tests_app:testChangeAuthor' test.id %}" method="post">
                 {% csrf_token %}
-                <textarea class="tinymce" name="text">{{article.author}}</textarea>
+                <textarea class="tinymce" name="text">{{test.author}}</textarea>
                 <button type="submit" class="btn btn-default" value="Change" class="form title"> Change author
                 </button>
             </form>
@@ -146,15 +146,15 @@
     {% if not user.is_authenticated %}
     <div class="row">
         <div class="col-md-12 articleText">
-            {{article.text | safe}}
+            {{test.text | safe}}
         </div>
     </div>
     {% else %}
     <div class="row rowChangeArticle">
         <div class=" col-md-12">
-            <form action="{% url 'article_app:articleChangeText' article.id %}" method="post">
+            <form action="{% url 'tests_app:testChangeText' test.id %}" method="post">
                 {% csrf_token %}
-                <textarea class="tinymce" name="text">{{article.text}}</textarea>
+                <textarea class="tinymce" name="text">{{test.text}}</textarea>
                 <button type="submit" class="btn btn-default" value="Change" class="form title"> Change text
                 </button>
             </form>

@@ -10,16 +10,6 @@ def start_page(request):
     categories = Categories.objects.all()
     return render(request, 'main_app/Home.html', { 'articles' : articles, 'categories' : categories})
 
-def articles(request):
-    articles = Atricles.objects.filter(categoryId = 1).filter(isVisible = True)
-    return render(request, 'article_app/articles.html', { 'articles' : articles})
-
-def tests(request):
-    tests = Atricles.objects.filter(categoryId = 2).filter(isVisible = True)
-    return render(request, 'main_app/tests.html', { 'articles' : articles})
-
-
-
 def changeFooterText1(request):
      if request.method == 'POST':
         text = request.POST.get('text')
