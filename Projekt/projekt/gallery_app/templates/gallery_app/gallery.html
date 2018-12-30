@@ -1,0 +1,24 @@
+{% extends 'main_app/base.html' %}
+
+{% block middle %}
+
+<div class="row">
+        <div class="col articlesMainTitle">
+            {{nav.text5}}
+        </div>
+    </div>
+
+<div class="row">
+    {% for image in images %}
+    <div class="card col-md-4 shortArticle">
+        <a href="../media/{{image.image}}">
+            <img class="img-responsive smallImageArticle" src="../media/{{image.image}}" alt="imageArticle" width="100%">
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+{% endblock %}

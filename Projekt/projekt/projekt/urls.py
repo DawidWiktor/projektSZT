@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^tests/', include('tests_app.urls')),
     url(r'^contact/', include('contact_app.urls')),
     url(r'^aboutMe/', include('aboutMe_app.urls')),
+    url(r'^gallery/', include('gallery_app.urls')),
     url(r'^account/', include('user_account.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
 ]

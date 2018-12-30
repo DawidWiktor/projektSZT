@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'tests_app',
     'contact_app',
     'aboutMe_app',
+    'gallery_app',
     'user_account',
     'tinymce',
     'ckeditor_uploader',
