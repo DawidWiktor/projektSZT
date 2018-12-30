@@ -44,3 +44,14 @@ class Atricles(models.Model):
     backgroundColor = RGBColorField(null=True)
     categoryId = models.ForeignKey(
         Categories, default=1,  on_delete=models.CASCADE)
+
+class Contact(models.Model):
+    labelDetails = HTMLField(null = True)
+    labelPhone = HTMLField(null = True)
+    phone = HTMLField(null = True)
+    labelEmail = HTMLField(null = True)
+    email = HTMLField(null = True)
+
+class AboutMe(models.Model):
+    label = HTMLField(null = True)
+    content = HTMLField(null = True)

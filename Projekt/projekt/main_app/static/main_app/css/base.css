@@ -60,3 +60,24 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+.contactTitle{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.contactChange{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.aboutMeLabel{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.aboutMeChange{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

@@ -24,6 +24,8 @@ urlpatterns = [
     url(r'^', include('main_app.urls')),
     url(r'^articles/', include('article_app.urls')),
     url(r'^tests/', include('tests_app.urls')),
+    url(r'^contact/', include('contact_app.urls')),
+    url(r'^aboutMe/', include('aboutMe_app.urls')),
     url(r'^account/', include('user_account.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
 ]
