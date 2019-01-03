@@ -1,4 +1,5 @@
 from .models import Navbar, Footer, BasePage
+from django.conf import settings
 
 def add_variable_to_context(request):
     navbar = Navbar.objects.first()
@@ -7,7 +8,6 @@ def add_variable_to_context(request):
     data = {
         "user": request.user
     }
-    
     return {
         'data': data,
         'nav': navbar,
