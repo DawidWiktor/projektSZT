@@ -1,0 +1,25 @@
+{% extends 'main_app/base.html' %}
+
+{% block middle %}
+
+<div class="row">
+    <div class="col">
+        Search
+    </div>
+</div>
+
+<div class="row">
+    {% for article in articles %}
+    <div class="card col-md-4 shortArticle">
+        <a href="{% url 'article_app:articleView' article.id %}">
+            <img class="img-responsive smallImageArticle" src="../media/{{article.image}}" alt="imageArticle" width="100%">
+            <div class="card-title shortArticle_title">{{article.title | safe}}</div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+{% endblock %}

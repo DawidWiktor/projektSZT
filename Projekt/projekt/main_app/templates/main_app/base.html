@@ -49,7 +49,7 @@
     {% endif %}
 
     <div class="row">
-      <img src="media/{{base.headerImage}}" class="img-responsive baseHeaderImage" width="100%" alt="Base image">
+      <img src="../../../media/{{base.headerImage}}" class="img-responsive baseHeaderImage" width="100%" alt="Base image">
     </div>
 
     <div class="container--navbar sticky-top" style="background-color:{{nav.color}};">
@@ -77,14 +77,14 @@
               <a class="nav-link" style="color:{{nav.fontColor}}" href="{% url 'gallery_app:gallery' %}">{{nav.text5}}</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <form class="form-inline my-2 my-lg-0" action="{% url 'main_app:search' %}" method="post">
+            {% csrf_token %}
+            <input class="form-control mr-sm-2" name="text" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
       </nav>
     </div>
-
 
     {% block middle %}
     {% endblock %}
@@ -126,7 +126,7 @@
               <form action="{% url 'main_app:changeFooterText1' %}" method="post">
                 {% csrf_token %}
                 <textarea class="tinymce" name="text">{{footer.text1}}</textarea>
-                <button type="submit" class="btn btn-default" value="Login" class="form login"> Change </button>
+                <button type="submit" class="btn btn-info" value="Login" class="form login"> Change </button>
               </form>
             </div>
           </div>
@@ -136,7 +136,7 @@
               <form action="{% url 'main_app:changeFooterText2' %}" method="post">
                 {% csrf_token %}
                 <textarea class="tinymce" name="text">{{footer.text2}}</textarea>
-                <button type="submit" class="btn btn-default" value="Login" class="form login"> Change </button>
+                <button type="submit" class="btn btn-info" value="Login" class="form login"> Change </button>
               </form>
             </div>
           </div>

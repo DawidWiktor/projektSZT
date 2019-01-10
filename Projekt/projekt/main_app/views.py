@@ -22,9 +22,17 @@ def changeFooterText2(request):
      if request.method == 'POST':
         text = request.POST.get('text')
         footer = Footer.objects.first()
-        footer.text2 = text
+        foot
+        er.text2 = text
         footer.save()
         return render(request, 'main_app/Home.html')
+
+def search(request):
+    if request.method == "POST":
+        text = request.POST.get('text')
+        articles = Atricles.objects.only('id','title', 'image').filter(title__contains = text).filter(isVisible = True)
+        categories = Categories.objects.all()
+        return render(request, 'main_app/Search.html', { 'articles' : articles, 'categories' : categories})
 
 def simple_upload(request):
     context = {}
