@@ -2,19 +2,29 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from main_app.models import LogSignIn
+from django.utils import timezone
 # Create your views here.
 
 
 
 def login_view(request):
     if request.method == "POST":
+        log = LogSignIn()
+        isSuccess = False
         username = request.POST.get('username')  
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
         if user is not None:
+            request.session.set_expiry(300)
             login(request, user)
+            isSuccess = True
         else:
             messages.error(request, 'Wrong login or password.')
+        log.isSuccess = isSuccess
+        log.login = username
+        log.date = timezone.now()
+        log.save()
     return redirect('main_app:start_page')  
 
 

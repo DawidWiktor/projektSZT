@@ -1,6 +1,7 @@
 from django.db import models
 from tinymce.models import HTMLField
 from colorful.fields import RGBColorField
+from django.utils import timezone
 # Create your models here.
 
 
@@ -55,3 +56,12 @@ class Contact(models.Model):
 class AboutMe(models.Model):
     label = HTMLField(null = True)
     content = HTMLField(null = True)
+
+
+class Settings(models.Model):
+    timeLogOff = models.IntegerField(default = 300)
+
+class LogSignIn(models.Model):
+    login = models.CharField(max_length = 500)
+    date = models.TimeField(default = timezone.now())
+    isSuccess = models.BooleanField(default = False)
