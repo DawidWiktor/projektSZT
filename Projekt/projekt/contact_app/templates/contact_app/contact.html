@@ -89,6 +89,32 @@
 {% endif %}
 
 
+<div class="row">
+    <div class="col-lg-6 contactLabelDoYouHave">
+        Do you have any question? Send message!
+    </div>
+</div>
+<div class="row sendMessageGroup">
+    <div class="col-lg-6">
+        <form action="{% url 'contact_app:sendMessage' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="exampleInputName">Name</label>
+                <input class="form-control" id="exampleInputName" name="name" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputMessage">Message</label>
+                <textarea class="form-control" id="exampleInputMessage" name="content" placeholder="Enter message" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-info" value="message" class="form login">Send message</button>
+        </form>
+    </div>
+</div>
+
 
 
 

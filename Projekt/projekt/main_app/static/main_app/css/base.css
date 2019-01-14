@@ -88,3 +88,15 @@
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+.contactLabelDoYouHave
+{
+    margin-top: 50px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.sendMessageGroup{
+    margin-bottom: 20px;
+}

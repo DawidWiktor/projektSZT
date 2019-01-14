@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^changePhone/$', views.changePhone, name='changePhone'),
     url(r'^changelabelEmaim/$', views.changelabelEmail, name='changelabelEmail'),
     url(r'^changeEmail/$', views.changeEmail, name='changeEmail'),
+    url(r'^sendMessage/$', views.sendMessage, name='sendMessage'),
 ]
