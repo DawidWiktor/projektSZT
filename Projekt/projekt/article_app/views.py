@@ -6,7 +6,7 @@ from django.core.files.storage import FileSystemStorage
 
 
 def articles(request):
-    articles = Atricles.objects.filter(categoryId = 1).filter(isVisible = True)
+    articles = Atricles.objects.filter(categoryId = 1).filter(isVisible = True).order_by('id').reverse()
     return render(request, 'article_app/articles.html', { 'articles' : articles})
 
 def articleView(request, articleId):
@@ -71,11 +71,23 @@ def articleChangeIsVisible(request, articleId):
     article.save()
     return render(request, 'article_app/article.html', {'article': article})
 
-def articleChangeImage(request, articleId):
+def articleChangeImage1(request, articleId):
     article = Atricles.objects.filter(id = articleId).first()
     article.image = request.POST.get('text')
     article.save()
     return render(request, 'article_app/article.html', {'article': article})
+
+def articleChangeImage(request, articleId):
+    context = {}
+    if request.method == 'POST' and request.FILES['text']:
+        myfile = request.FILES['text']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
+        article = Atricles.objects.filter(id = articleId).first()
+        article.image = filename
+        article.save()
+        return render(request, 'article_app/article.html', {'article': article})
 
 def articleAdd(request):
     article = Atricles()

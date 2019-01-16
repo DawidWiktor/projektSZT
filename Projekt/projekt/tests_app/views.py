@@ -6,7 +6,7 @@ from django.core.files.storage import FileSystemStorage
 
 
 def tests(request):
-    tests = Atricles.objects.filter(categoryId = 2).filter(isVisible = True)
+    tests = Atricles.objects.filter(categoryId = 2).filter(isVisible = True).order_by('id').reverse()
     return render(request, 'tests_app/tests.html', { 'tests' : tests})
 
 def testView(request, testId):
@@ -71,11 +71,23 @@ def testChangeIsVisible(request, testId):
     test.save()
     return render(request, 'tests_app/test.html', {'test': test})
 
-def testChangeImage(request, testId):
+def testChangeImage1(request, testId):
     test = Atricles.objects.filter(id = testId).first()
     test.image = request.POST.get('text')
     test.save()
     return render(request, 'tests_app/test.html', {'test': test})
+
+def testChangeImage(request, testId):
+    context = {}
+    if request.method == 'POST' and request.FILES['text']:
+        myfile = request.FILES['text']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
+        test = Atricles.objects.filter(id = articleId).first()
+        test.image = filename
+        test.save()
+        return render(request, 'tests_app/test.html', {'test': test})
 
 def testAdd(request):
     test = Atricles()

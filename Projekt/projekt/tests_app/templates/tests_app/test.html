@@ -23,7 +23,7 @@
     {% else %}
     <div class="row rowChangeArticle">
         <div class="col-md-2">
-            <form action="{% url 'tests_app:testChangeImage' test.id %}" method="post">
+            <form action="{% url 'tests_app:testChangeImage' test.id %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <input type="file" name="text">{{test.image}}</input>
                 <button type="submit" class="btn btn-default" value="Change" id="buttonOwn"> Change image

@@ -6,7 +6,7 @@ from .models import Footer
 # Create your views here.
 
 def start_page(request):
-    articles = Atricles.objects.only('id','title', 'image').filter(isBest = True).filter(isVisible = True)[:9]
+    articles = Atricles.objects.only('id','title', 'image').filter(isBest = True).filter(isVisible = True).order_by('id').reverse()[:9]
     categories = Categories.objects.all()
     return render(request, 'main_app/Home.html', { 'articles' : articles, 'categories' : categories})
 
@@ -30,7 +30,7 @@ def changeFooterText2(request):
 def search(request):
     if request.method == "POST":
         text = request.POST.get('text')
-        articles = Atricles.objects.only('id','title', 'image').filter(title__contains = text).filter(isVisible = True)
+        articles = Atricles.objects.only('id','title', 'image').filter(title__contains = text).filter(isVisible = True).order_by('id').reverse()
         categories = Categories.objects.all()
         return render(request, 'main_app/Search.html', { 'articles' : articles, 'categories' : categories})
 
