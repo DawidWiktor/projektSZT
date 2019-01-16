@@ -89,7 +89,7 @@
     </div>
     {% else %}
     <div class="row rowChangeArticle">
-        <div class="offset-lg-5 col-md-3">
+        <div class="col-md-3">
             <form action="{% url 'tests_app:testChangeTitle' test.id %}" method="post">
                 {% csrf_token %}
                 <textarea class="tinymce" name="text">{{test.title}}</textarea>
