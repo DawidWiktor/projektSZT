@@ -33,6 +33,12 @@
     gtag('config', 'UA-132445976-1');
   </script>
 </head>
+<style>
+  #buttonOwn {
+    background-color: {{base.colorButton}};
+    border-color: {{base.colorButton}};
+  }
+</style>
 
 <body>
 
@@ -135,7 +141,7 @@
               <form action="{% url 'main_app:changeFooterText1' %}" method="post">
                 {% csrf_token %}
                 <textarea class="tinymce" name="text">{{footer.text1}}</textarea>
-                <button type="submit" class="btn btn-info" value="Login" class="form login"> Change </button>
+                <button type="submit" class="btn btn-info" value="Login" id="buttonOwn"> Change </button>
               </form>
             </div>
           </div>
@@ -145,7 +151,7 @@
               <form action="{% url 'main_app:changeFooterText2' %}" method="post">
                 {% csrf_token %}
                 <textarea class="tinymce" name="text">{{footer.text2}}</textarea>
-                <button type="submit" class="btn btn-info" value="Login" class="form login"> Change </button>
+                <button type="submit" class="btn btn-info" value="Login" id="buttonOwn"> Change </button>
               </form>
             </div>
           </div>

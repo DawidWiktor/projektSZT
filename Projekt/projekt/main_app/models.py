@@ -34,6 +34,7 @@ class Footer(models.Model):
 class BasePage(models.Model):
     headerImage = models.ImageField()
     background_color = RGBColorField()
+    colorButton = RGBColorField(default = '#17a2b8')
 
     class Meta:
         verbose_name_plural = "BasePage"

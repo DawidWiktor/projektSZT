@@ -11,7 +11,7 @@
             <form action="{% url 'article_app:articleChangeBackgroundColor' article.id %}" method="post">
                 {% csrf_token %}
                 <input type="color" name="text">{{article.backgroundColor}}</input>
-                <button type="submit" class="btn btn-info" value="Change" class="form title"> Change BackgroundColor
+                <button type="submit" class="btn btn-info" value="Change" id="buttonOwn"> Change BackgroundColor
                 </button>
             </form>
         </div>
@@ -26,7 +26,7 @@
             <form action="{% url 'article_app:articleChangeImage' article.id %}" method="post">
                 {% csrf_token %}
                 <input type="file" name="text">{{article.image}}</input>
-                <button type="submit" class="btn btn-info" value="Change" class="form title"> Change image
+                <button type="submit" class="btn btn-info" value="Change" id="buttonOwn"> Change image
                 </button>
             </form>
         </div>
@@ -42,7 +42,7 @@
             <form action="{% url 'article_app:articleChangeIsBest' article.id %}" method="post">
                 {% csrf_token %}
                 <input type="checkbox" name="text">{{article.isBest}}</input>
-                <button type="submit" class="btn btn-info" value="Change" class="form title"> Change isBest
+                <button type="submit" class="btn btn-info" value="Change" id="buttonOwn"> Change isBest
                 </button>
             </form>
         </div>
@@ -58,7 +58,7 @@
             <form action="{% url 'article_app:articleChangeIsVisible' article.id %}" method="post">
                 {% csrf_token %}
                 <input type="checkbox" name="text">{{article.isVisible}}</input>
-                <button type="submit" class="btn btn-info" value="Change" class="form title"> Change is visible
+                <button type="submit" class="btn btn-info" value="Change" id="buttonOwn"> Change is visible
                 </button>
             </form>
         </div>
@@ -73,7 +73,7 @@
             <form action="{% url 'article_app:articleChangeCategory' article.id %}" method="post">
                 {% csrf_token %}
                 <textarea name="text">{{article.category}}</textarea>
-                <button type="submit" class="btn btn-info" value="Change" class="form title"> Change category
+                <button type="submit" class="btn btn-info" value="Change" id="buttonOwn"> Change category
                 </button>
             </form>
         </div>
@@ -93,7 +93,7 @@
             <form action="{% url 'article_app:articleChangeTitle' article.id %}" method="post">
                 {% csrf_token %}
                 <textarea class="tinymce" name="text">{{article.title}}</textarea>
-                <button type="submit" class="btn btn-info" value="Change" class="form title"> Change title
+                <button type="submit" class="btn btn-info" value="Change" id="buttonOwn"> Change title
                 </button>
             </form>
         </div>
@@ -113,7 +113,7 @@
             <form action="{% url 'article_app:articleChangeDate' article.id %}" method="post">
                 {% csrf_token %}
                 <textarea class="tinymce" name="text">{{article.date}}</textarea>
-                <button type="submit" class="btn btn-info" value="Change" class="form title"> Change dates
+                <button type="submit" class="btn btn-info" value="Change" id="buttonOwn"> Change dates
                 </button>
             </form>
         </div>
@@ -134,7 +134,7 @@
             <form action="{% url 'article_app:articleChangeAuthor' article.id %}" method="post">
                 {% csrf_token %}
                 <textarea class="tinymce" name="text">{{article.author}}</textarea>
-                <button type="submit" class="btn btn-info" value="Change" class="form title"> Change author
+                <button type="submit" class="btn btn-info" value="Change" id="buttonOwn"> Change author
                 </button>
             </form>
         </div>
@@ -155,7 +155,7 @@
             <form action="{% url 'article_app:articleChangeText' article.id %}" method="post">
                 {% csrf_token %}
                 <textarea class="tinymce" name="text">{{article.text}}</textarea>
-                <button type="submit" class="btn btn-info" value="Change" class="form title"> Change text
+                <button type="submit" class="btn btn-info" value="Change" id="buttonOwn"> Change text
                 </button>
             </form>
         </div>

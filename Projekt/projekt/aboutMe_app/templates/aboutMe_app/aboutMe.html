@@ -15,7 +15,7 @@
         <form action="{% url 'aboutMe_app:changeLabel' %}" method="post">
             {% csrf_token %}
             <textarea class="tinymce" name="text">{{aboutMeData.label}}</textarea>
-            <button type="submit" class="btn btn-info" value="Login" class="form login"> Change label
+            <button type="submit" class="btn btn-info" value="Login" id="buttonOwn">Change label
             </button>
         </form>
     </div>
@@ -36,7 +36,7 @@
         <form action="{% url 'aboutMe_app:changeContent' %}" method="post">
             {% csrf_token %}
             <textarea class="tinymce" name="text">{{aboutMeData.content}}</textarea>
-            <button type="submit" class="btn btn-info" value="Login" class="form login"> Change conent
+            <button type="submit" class="btn btn-info" value="Login" id="buttonOwn"> Change conent
             </button>
         </form>
     </div>
